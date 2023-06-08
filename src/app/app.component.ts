@@ -1,40 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
-
-interface IconDefinition {
-  name: string;
-  path: string;
-}
-
-const icons: IconDefinition[] = [
-  { name: 'undo-variant', path: './icons/undo-variant.svg' },
-  // { name: 'icon-name-2', path: 'path/to/icon2.svg' },
-  // Add more icon definitions as needed
-];
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  title = 'custom icon';
+
   constructor(
-    private domSanitizer: DomSanitizer,
-    private matIconRegistry: MatIconRegistry
-  ) {}
-
-  ngOnInit(): void {
-    this.registerIcons();
-  }
-
-  private registerIcons(): void {
-    icons.forEach((icon) => {
-      this.matIconRegistry.addSvgIcon(
-        icon.name,
-        this.domSanitizer.bypassSecurityTrustResourceUrl(icon.path)
-      );
-    });
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {
+    this.matIconRegistry.addSvgIcon(
+      'undo-variant',
+      this.domSanitizer.bypassSecurityTrustResourceUrl(
+        '../assets/svg/undo-variant.svg'
+      )
+    );
   }
 }
