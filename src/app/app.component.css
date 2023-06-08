@@ -5,3 +5,18 @@ h3 {
 div.row {
     color: rgb(114, 20, 92);
 }
+
+.undo-variant {
+	/* Add dimentions to span */
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	/* Add background image */
+	background-image: url('https://api.iconify.design/mdi/undo-variant.svg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.background-demo--2 {
+	background-image: url('https://api.iconify.design/fluent-emoji-flat/memo.svg');
+}
